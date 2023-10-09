@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap.scss";
+
+
+
+.left-39{
+    left: 39% !important;
+}
+.text-left{
+    text-align: left !important;
+    font-weight: 500;
+}
+
+.btn-left{
+    display: flex;
+    align-items: center;
+    width: 17%;
+    background-color: #f96332!important;
+}
+.btn-text-size{
+    font-size: 130%;
+}
+.right-arrow{
+    color:white;
+    padding-left: 10px;
+    font-size: 22px;
+}

@@ -6,6 +6,12 @@
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
             </button>
+            <!-- <img src="assets/img/ramkpt-logo.png" > -->
+            <div class="title-container">
+              <h2>R</h2>
+              <h5>AM</h5>
+              <h2>KPT</h2>
+            </div>
         </div>
         <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
             <ul class="navbar-nav ml-auto">
@@ -20,12 +26,13 @@
                       <p>Services</p>
                     </a>
                     <div class="dropdown-content">
-                      <a [routerLink]="['/examples/payment']">Payment Gateway</a>
+                      <!-- <a [routerLink]="['/examples/payment']">Payment Gateway</a> -->
                       <a [routerLink]="['/examples/mt4']">MT4 Expert</a>
                       <a [routerLink]="['/examples/mt5']">MT5 Expert</a>
                       <a [routerLink]="['/examples/forex']">Forex Trading Expert</a>
                       <a [routerLink]="['/examples/payroll']">Payrolling</a>
                       <a [routerLink]="['/examples/pmo']">PMO</a>
+                      <a [routerLink]="['/examples/productdevelopment']">Product Development</a>
                     </div>
                   </div>
                 </li>
@@ -44,8 +51,8 @@
                 </div>
               </li>
                 <li class="nav-item nav-bar-font">
-                    <a class="nav-link">
-                      <p>Solution</p>
+                    <a class="nav-link" [routerLink]="['/examples/products']">
+                      <p>Products</p>
                     </a>
                 </li>
                 <!-- <li class="nav-item nav-bar-font">

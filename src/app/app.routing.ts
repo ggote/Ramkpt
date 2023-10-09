@@ -15,6 +15,8 @@ import { Mt4ExpertComponent } from "./examples/services/mt4-expert/mt4-expert.co
 import { Mt5ExpertComponent } from "./examples/services/mt5-expert/mt5-expert.component";
 import { PmoComponent } from "./examples/services/pmo/pmo.component";
 import { PayrollingComponent } from "./examples/services/payrolling/payrolling.component";
+import { ProductDevelopmentComponent } from "./examples/services/product-development/product-development.component";
+import { ProductsComponent } from './examples/products/products.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -28,7 +30,9 @@ const routes: Routes =[
     { path: 'examples/mt4',       component: Mt4ExpertComponent },
     { path: 'examples/mt5',     component: Mt5ExpertComponent },
     { path: 'examples/pmo',     component: PmoComponent },
-    { path: 'examples/payroll',     component: PayrollingComponent }
+    { path: 'examples/payroll',     component: PayrollingComponent },
+    { path: 'examples/productdevelopment',     component: ProductDevelopmentComponent },
+    { path: 'examples/products',     component: ProductsComponent }
 ];
 
 @NgModule({

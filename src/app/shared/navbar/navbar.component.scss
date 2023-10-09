@@ -38,3 +38,15 @@
   .dropdown:hover .dropdown-content {display: block;}
   
  // .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+ .title-container {
+  display: flex; /* Use flexbox */
+  align-items: baseline; /* Vertically center the elements */
+}
+
+/* Optional: Add margin or other styles as needed */
+h2, h5 {
+  margin: 0; /* Remove default margins to reduce spacing between elements */
+  font-weight: bold;
+  color: aliceblue;
+}

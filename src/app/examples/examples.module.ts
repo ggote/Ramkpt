@@ -21,6 +21,8 @@ import { ForexTradingComponent } from './services/forex-trading/forex-trading.co
 import { PmoComponent } from './services/pmo/pmo.component';
 import { FooterComponent } from 'app/shared/footer/footer.component';
 import { PayrollingComponent } from './services/payrolling/payrolling.component';
+import { ProductDevelopmentComponent } from './services/product-development/product-development.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
     imports: [
@@ -46,7 +48,9 @@ import { PayrollingComponent } from './services/payrolling/payrolling.component'
         ForexTradingComponent,
         PayrollingComponent,
         PmoComponent,
-        FooterComponent
+        FooterComponent,
+        ProductDevelopmentComponent,
+        ProductsComponent
     ]
 })
 export class ExamplesModule { }
