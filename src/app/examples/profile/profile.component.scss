@@ -16,3 +16,16 @@
   .w-150{
     width: 150%;
   }
+
+  
+@media (min-width: 1200px) {
+}
+@media (max-width: 600px) {
+  .form-input{
+    width: 130px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media(min-width:850px) and (max-width:991px){
+}
