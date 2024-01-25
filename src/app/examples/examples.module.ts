@@ -7,6 +7,7 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AgmCoreModule } from '@agm/core';
 import {RouterModule} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -35,7 +36,8 @@ import { ProductsComponent } from './products/products.component';
         ReactiveFormsModule,
         AgmCoreModule.forRoot({
             apiKey: 'YOUR_KEY_HERE'
-        })
+        }),
+        HttpClientModule
     ],
     declarations: [
         LandingComponent,

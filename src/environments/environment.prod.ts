@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  bdTraceUrl : 'https://pay.billdesk.com/jssdk/v1/dist/',
+  baseUrl: ''
 };

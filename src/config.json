@@ -1,0 +1,18 @@
+{
+    "alg": "HS256",
+    "clientId" : "uatramkmcc",
+    "merchanId": "UATRAMKMCC",
+    "secreatekey":"sTPDtUMgiCGkiN7eP14nCnzxmUMI8LGt",
+    "development":{
+        "paymentURL" : "https://uat.billdesk.com/jssdk/v1/dist/"
+    },
+    "qa":{
+        "paymentURL" : "https://uat.billdesk.com/jssdk/v1/dist/"
+    },
+    "uat":{
+        "paymentURL" : "https://uat.billdesk.com/jssdk/v1/dist/"
+    },
+    "production":{
+        "paymentURL" : "https://uat.billdesk.com/jssdk/v1/dist/"
+    }
+}
