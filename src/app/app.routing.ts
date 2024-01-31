@@ -17,6 +17,8 @@ import { PmoComponent } from "./examples/services/pmo/pmo.component";
 import { PayrollingComponent } from "./examples/services/payrolling/payrolling.component";
 import { ProductDevelopmentComponent } from "./examples/services/product-development/product-development.component";
 import { ProductsComponent } from './examples/products/products.component';
+import { PrivacyPolicyComponent} from './examples/privacy-policy/privacy-policy.component';
+import { TermsComponent } from './examples/terms/terms.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -32,7 +34,12 @@ const routes: Routes =[
     { path: 'examples/pmo',     component: PmoComponent },
     { path: 'examples/payroll',     component: PayrollingComponent },
     { path: 'examples/productdevelopment',     component: ProductDevelopmentComponent },
-    { path: 'examples/products',     component: ProductsComponent }
+    { path: 'examples/products',     component: ProductsComponent },
+    { path: 'examples/products/privacy',      component: PrivacyPolicyComponent },
+    { path: 'examples/products/terms',        component: TermsComponent },
+    { path: 'index/privacy',      component: PrivacyPolicyComponent },
+    { path: 'index/terms',        component: TermsComponent },
+    { path: 'index/landing',     component: LandingComponent },
 ];
 
 @NgModule({

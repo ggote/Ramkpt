@@ -24,6 +24,8 @@ import { FooterComponent } from 'app/shared/footer/footer.component';
 import { PayrollingComponent } from './services/payrolling/payrolling.component';
 import { ProductDevelopmentComponent } from './services/product-development/product-development.component';
 import { ProductsComponent } from './products/products.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
     imports: [
@@ -52,7 +54,9 @@ import { ProductsComponent } from './products/products.component';
         PmoComponent,
         FooterComponent,
         ProductDevelopmentComponent,
-        ProductsComponent
+        ProductsComponent,
+        PrivacyPolicyComponent,
+        TermsComponent
     ]
 })
 export class ExamplesModule { }

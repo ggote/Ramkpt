@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,9 +10,16 @@ export class FooterComponent implements OnInit {
 
   data : Date = new Date();
 
-  constructor() { }
+  constructor(
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
   }
-
+  navigateToTerms(){
+    this.router.navigate['/examples/terms'];
+  }
+  navigateToPolicy(){
+    this.router.navigate['/examples/privacy']
+  }
 }
