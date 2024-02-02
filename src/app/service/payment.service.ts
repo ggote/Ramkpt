@@ -19,10 +19,10 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
   // Function to perform the POST API call
-  initiatePayment(data: any,header): Observable<any> {
+  initiatePayment(header:any,payload: any): Observable<any> {
    
     const headers:any = new HttpHeaders(header);
-    return this.http.post<any>(this.createOrderUrl, data, headers);
+    return this.http.post<any>(this.createOrderUrl, payload,{ headers : headers});
   }
 
   //get ip address
@@ -31,9 +31,9 @@ export class PaymentService {
   }
 
   // Function to perform the POST API call for create order
-  createOrder(header:any,data: any): Observable<any> {
-    const headers = new HttpHeaders(header);
+  createOrder(data: any): Observable<any> {
+    //const headers = new HttpHeaders(header);
 
-    return this.http.post<any>(this.createOrderUrl, data, { headers });
+    return this.http.post<any>(this.createOrderUrl, data);
   }
 }

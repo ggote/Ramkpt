@@ -72,15 +72,19 @@ export class ProductsComponent implements OnInit {
       const timestamp = new Date().getTime();
       const randomSuffix = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
       const orderNumber = `${prefix}${timestamp}${randomSuffix}`;
+
+      let getDate = new Date().toISOString().replace(/\.(\d+)Z$/, '');
+      let offset =await this.getTimeZone();
       
+      let orderDate = getDate + offset;
       const data =
       {
         "mercid": this.merchandId,
         "orderid": orderNumber,
-        "amount": this.amount,
-        "order_date": new Date(),
+        "amount": Number(this.amount),
+        "order_date": orderDate,
         "currency": 356,
-        "ru" : "https://merchant.com",
+        "ru" : "https://ramkpt.com/examples/landing",
         "additional_info": {
         "additional_info1": "Details1",
         "additional_info2": "Details2"
@@ -90,9 +94,7 @@ export class ProductsComponent implements OnInit {
           "init_channel" : "internet",
           "ip": this.ipAddress,
           "mac": this.macAddress,
-          //"imei": "990000112233445",
           "accept_header": "text/html",
-          //"fingerprintid": "61b12c18b5d0cf901be34a23ca64bb19"
         }
         }
 
@@ -101,30 +103,32 @@ export class ProductsComponent implements OnInit {
           'Accept':'application/jose',
           'BD-Traceid': orderNumber,
           'BD-Timestamp': timestamp.toString()
-          //'Access-Control-Allow-Origin': '*'
-          // Add any additional headers if needed
         };
-      
-      const encryptPayload = await this.hmacJwsSignService.encryptAndSignJWSWithHMAC(data.toString(),this.secretKey,this.clientId);
-      console.log(data,"encryptPayload",encryptPayload);
-      // const decryptPayload = await this.hmacJwsSignService.verifyAndDecryptJWSWithHMAC(encryptPayload,this.secretKey);
-      // console.log("decryptPayload",decryptPayload);
-      const encryptHeaders = await this.hmacJwsSignService.encryptAndSignJWSWithHMAC(headers.toString(),this.secretKey,this.clientId);
-      console.log(headers,"encryptHeaders",encryptHeaders);
-      // const decryptHeader = await this.hmacJwsSignService.verifyAndDecryptJWSWithHMAC(encryptHeaders,this.secretKey);
-      // console.log("decryptHeader",decryptHeader);
-      this.paymentService.initiatePayment(encryptPayload,encryptHeaders).subscribe(
-        response => {
+        console.log("headers",headers);
+        console.log("data",data);
+      // const encryptHeader = await this.hmacJwsSignService.signJwsHmac(headers,this.clientId,this.secretKey);
+      // console.log("encryptHeader",encryptHeader);
+      const encryptPayload = await this.hmacJwsSignService.signJwsHmac(data,this.clientId,this.secretKey);
+      console.log("encryptHeaders",encryptPayload);
+      this.paymentService.initiatePayment(headers,encryptPayload).subscribe(
+        async response => {
           console.log('API Response:', response);
-          // Handle the response as needed
+          const decryptResponse = await this.hmacJwsSignService.verifyAndDecryptJWSWithHMAC(response,this.secretKey)
+          console.log('API Response: decryptResponse', decryptResponse);
         },
-        error => {
+        async error => {
+          const decryptError = await this.hmacJwsSignService.verifyAndDecryptJWSWithHMAC(error.error,this.secretKey)
+          console.log('API Response: decryptError', decryptError);
           console.error('API Error:', error);
           // Handle the error as needed
         }
       );
     }
-
+    getTimeZone =async () => {
+      let offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+      return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+  }
+  
     createOrder = async(timeStamp,traceId,orderNumber) => {
       try {
         let header={
@@ -173,13 +177,13 @@ export class ProductsComponent implements OnInit {
           "fingerprintid":"61b12c18b5d0cf901be34a23ca64bb19"
           }
           }
-
-          const encryptObjHeader = await this.hmacJwsSignService.encryptAndSignJWSWithHMAC(header.toString(),this.secretKey,this.clientId);
-          console.log("encryptObjHeader",encryptObjHeader);
-          const encryptObjPayload = await this.hmacJwsSignService.encryptAndSignJWSWithHMAC(createOrderObj.toString(),this.secretKey,this.clientId);
+          // const encryptObjHeader = await this.hmacJwsSignService.encryptAndSignJWSWithHMAC(header.toString(),this.secretKey,this.clientId);
+          // console.log("encryptObjHeader",encryptObjHeader);
+          const encryptObjPayload = await this.hmacJwsSignService.encryptAndSignJWSWithHMAC(createOrderObj.toString(),header.toString(),this.secretKey,this.clientId);
           console.log("encryptPayload",encryptObjPayload);
 
-          this.paymentService.createOrder(encryptObjHeader,encryptObjPayload).subscribe(
+          
+          this.paymentService.createOrder(encryptObjPayload).subscribe(
             response => {
               console.log('API Response:', response);
               // Handle the response as needed
