@@ -11,6 +11,6 @@ export const environment = {
   clientId : "uatramkmcc",
   merchandId: "UATRAMKMCC",
   secreatekey:"sTPDtUMgiCGkiN7eP14nCnzxmUMI8LGt",
-  ipv4:"172.20.10.2",
+  ipv4:"106.193.102.131",
   macAddress:"5C-FB-3A-1D-C5-5D"
 };
